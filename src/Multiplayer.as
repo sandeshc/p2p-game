@@ -10,7 +10,7 @@ package
 	{
 		//private const SERVER		:String   = "rtmfp://p2p.rtmfp.net/";
 		//private const DEVKEY		:String   = "e9ad2c69d099e6946cbada30-abfda6e42ee6";
-		private const SERVER		:String   = "rtmfp://localhost/";
+		private const SERVER		:String   = "rtmfp://127.0.0.1/";
 		private const SERV_KEY		:String = SERVER; // + DEVKEY;
 		
 		private const OP_ROTATION 	:String = "R";
