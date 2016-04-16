@@ -5,7 +5,7 @@ package
 	public class Bullet extends FlxSprite
 	{
 		private var mOwner :String;
-		
+		private var muser : String;
 		public function Bullet() {
 			makeGraphic(2, 5, 0xffffffff);
 			kill();
@@ -19,7 +19,7 @@ package
 			
 			angle = theShip.angle;
 			owner = theShip.owner;
-			
+			user_name = theShip.name;
 			if(theShip.multiplayerColor != 0) {
 				color = theShip.multiplayerColor;
 			}
@@ -34,6 +34,8 @@ package
 		}
 		
 		public function get owner() :String { return mOwner; }
+		public function get user_name(): String {return muser; }
 		public function set owner(v :String) :void { mOwner = v; }
+		public function set user_name(v :String) :void { muser = v; }
 	}
 }

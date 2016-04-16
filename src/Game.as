@@ -19,6 +19,8 @@ package
 		
 		override protected function create(theEvent :Event):void {
             super.create(theEvent);
+			stage.removeEventListener(Event.DEACTIVATE, onFocusLost);
+			stage.removeEventListener(Event.ACTIVATE, onFocus);
         }
 	}
 }

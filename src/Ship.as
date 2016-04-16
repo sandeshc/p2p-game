@@ -95,5 +95,6 @@ package
 		public function set owner(v :String) :void { mOwner = v; }
 		public function get multiplayerColor() :uint { return mColor; }
 		public function get respawnCount() :Number { return mRespawnCount; }
+		public function get name():String {return mName.text; }
 	}
 }

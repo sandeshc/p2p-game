@@ -85,7 +85,7 @@ package com.reyco1.multiuser.core
 			Logger.log(event.info.code, this, true);
 			
 			
-			(FlxG.state as PlayState).hud.showMessage("Hello World", event.info.code);
+			//(FlxG.state as PlayState).hud.showMessage("Hello World", event.info.code);
 			
 			switch(event.info.code)
 			{

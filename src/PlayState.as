@@ -40,13 +40,13 @@ package
 		public function onHitByBullet(theBullet :Bullet, theShip :Ship) :void {
 			if(theBullet.owner != theShip.owner && !theShip.flickering && theShip.alive) {
 				theShip.kill();
-				handlePlayerKilled(theShip);
+				handlePlayerKilled(theShip, theBullet.user_name);
 			}
 		}
 		
-		private function handlePlayerKilled(thePlayerShip :Ship) :void {
+		private function handlePlayerKilled(thePlayerShip :Ship, theOwner:String) :void {
 			mMultiplayer.sendDie(thePlayerShip);
-			mHud.showMessage("You were killed!", "Respawn in N seconds", Constants.PLAYER_RESPAWN);
+			mHud.showMessage("You were killed by "+theOwner+"!", "Respawn in N seconds", Constants.PLAYER_RESPAWN);
 		}
 		
 		override public function update():void {
@@ -79,10 +79,28 @@ package
 				
 				mPlayer.x += mPlayer.direction.x * aSign;
 				mPlayer.y += mPlayer.direction.y * aSign;
+				
+				if (mPlayer.x<0 || mPlayer.x>Constants.GAME_ORG_WIDTH-50)
+					mPlayer.x -= mPlayer.direction.x * aSign;
+				
+				if (mPlayer.y<0 || mPlayer.y>Constants.GAME_ORG_HEIGHT-50)
+					mPlayer.y -= mPlayer.direction.y * aSign;
 			}
 			
 			if (FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT") || FlxG.keys.pressed("A") || FlxG.keys.pressed("D")) {
 				mPlayer.rotate(FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("D") ? Constants.PLAYER_ROTATION : -Constants.PLAYER_ROTATION);
+			}
+			if (FlxG.keys.pressed("HOME")){
+				mPlayer.x = 0;
+			}
+			if (FlxG.keys.pressed("END")){
+				mPlayer.x = Constants.GAME_ORG_WIDTH-50;
+			}
+			if (FlxG.keys.pressed("PAGEUP")){
+				mPlayer.y = 0;
+			}
+			if (FlxG.keys.pressed("PAGEDOWN")){
+				mPlayer.y = Constants.GAME_ORG_HEIGHT-50;
 			}
 		}
 		
